@@ -19,7 +19,7 @@ from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/<int:id>/', views.usersData.as_view()),
+    path('users/', views.usersData.as_view()),
     path('bookmark/', views.bookmarkData.as_view()),
     path('scene_percentage/', views.scene_percentageData.as_view()),
     path('scene_percentage/<int:user_id>/', views.readScene_Percentage_By_user_idData.as_view()),

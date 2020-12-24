@@ -20,9 +20,8 @@ from .models import words
 # Create your views here.
 
 class usersData (APIView):
-    def get(self, request, id):
-        # data = users.objects.all()
-        data = users.objects.filter(id = id)
+    def get(self, request):
+        data = users.objects.all()
         word = usersSerializers(data, many = True)
         return Response(word.data)
     def post(self): pass
