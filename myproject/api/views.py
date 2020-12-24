@@ -20,8 +20,9 @@ from .models import words
 # Create your views here.
 
 class usersData (APIView):
-    def get(self, request):
-        data = users.objects.all()
+    def get(self, request, id):
+        # data = users.objects.all()
+        data = users.objects.filter(id = id)
         word = usersSerializers(data, many = True)
         return Response(word.data)
     def post(self): pass
@@ -34,6 +35,12 @@ class bookmarkData (APIView):
 class scene_percentageData (APIView):
     def get(self, request):
         data = scene_percentage.objects.all()
+        word = scene_percentageSerializers(data, many = True)
+        return Response(word.data)
+    def post(self): pass
+class readScene_Percentage_By_user_idData(APIView):
+    def get(self, request, user_id):
+        data = scene_percentage.objects.filter(user_id = user_id)
         word = scene_percentageSerializers(data, many = True)
         return Response(word.data)
     def post(self): pass
@@ -55,6 +62,12 @@ class sceneData (APIView):
         word = sceneSerializers(data, many = True)
         return Response(word.data)
     def post(self): pass
+class readScene_By_LevelData (APIView):
+    def get(self, request, lvl):
+        data = scene.objects.filter(level = lvl)
+        word = sceneSerializers(data, many = True)
+        return Response(word.data)
+    def post(self): pass
 class recommendationData (APIView):
     def get(self, request):
         data = recommendation.objects.all()
@@ -64,6 +77,12 @@ class recommendationData (APIView):
 class wordData (APIView):
     def get(self, request):
         data = words.objects.all()
+        word = wordSerializers(data, many = True)
+        return Response(word.data)
+    def post(self): pass
+class readWord_By_Scene_idData (APIView):
+    def get(self, request, scene_id):
+        data = words.objects.filter(scene_id = scene_id)
         word = wordSerializers(data, many = True)
         return Response(word.data)
     def post(self): pass

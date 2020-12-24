@@ -19,12 +19,15 @@ from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', views.usersData.as_view()),
+    path('users/<int:id>/', views.usersData.as_view()),
     path('bookmark/', views.bookmarkData.as_view()),
     path('scene_percentage/', views.scene_percentageData.as_view()),
+    path('scene_percentage/<int:user_id>/', views.readScene_Percentage_By_user_idData.as_view()),
     path('understood/', views.understoodData.as_view()),
     path('not_understood/', views.not_understoodData.as_view()),
     path('scene/', views.sceneData.as_view()),
+    path('scene/<int:lvl>/', views.readScene_By_LevelData.as_view()),
     path('recommendation/', views.recommendationData.as_view()),
     path('words/', views.wordData.as_view()),
+    path('words/<int:scene_id>/', views.readWord_By_Scene_idData.as_view()),
 ]
